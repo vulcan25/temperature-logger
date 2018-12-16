@@ -1,5 +1,3 @@
-#import temp
-from time import sleep, strftime
 import requests , json
 import datetime
 

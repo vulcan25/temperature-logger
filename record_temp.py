@@ -1,3 +1,6 @@
+from temperature_logger import Report
+from time import sleep
+
 sensors = ['/sys/bus/w1/devices/28-0000077aae57/w1_slave',
            '/sys/bus/w1/devices/28-0000077aa8d5/w1_slave',
            '/sys/bus/w1/devices/28-0000077b5cfd/w1_slave',
