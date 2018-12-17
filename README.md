@@ -16,9 +16,9 @@ Note the `28-0000077b5cfd` part will differ per sensor.  5.187 degress celcius i
 
 Create a python 3 virtualenv, and install:
 
-python -m venv temperature-logger
-. venv/bin/activate
-pip install -e git+https://github.com/vulcan25/temperature-logger#egg=temperature-logger
+	python -m venv temperature-logger
+	. venv/bin/activate
+	pip install -e git+https://github.com/vulcan25/temperature-logger#egg=temperature-logger
 
 ## Usage
 
