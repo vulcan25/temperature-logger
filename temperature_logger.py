@@ -12,15 +12,10 @@ def conv(o):
 
 class Report():
 
-    url = ''
-    sensors = []
-
-    # Holding area for readings, prior to submission.
-    readings = []
-
     def __init__(self, url, sensors):
         self.url = url
         self.sensors = sensors
+        self.readings = []
  
     def read_temps(self):
         """ Read the temperature from each sensor """
