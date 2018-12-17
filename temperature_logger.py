@@ -25,7 +25,7 @@ class Report():
     def read_temps(self):
         """ Read the temperature from each sensor """
         try:
-            import temp
+            import temperature
             dataset = self.readings
             
             date = datetime.datetime.now()
