@@ -1,7 +1,6 @@
-A temperature logger designed to work with the DS18B20 and the raspberry pi.  This application logs temperatures to a flask endpoint.
+A temperature logger designed to work with the DS18B20 and the raspberry pi.  This application logs temperatures to a flask endpoint.  
 
 ## Pre-requirements
-
 
 You will need to wire up the DS18B20 (or several) as per [this tutorial](http://www.circuitbasics.com/raspberry-pi-ds18b20-temperature-sensor-tutorial/).
 Follow the wiring diagram `Wiring for SSH Terminal Output`.  If this worked, you should be able to see the following information at the terminal for each sensor:
@@ -10,7 +9,7 @@ Follow the wiring diagram `Wiring for SSH Terminal Output`.  If this worked, you
 	53 00 4b 46 7f ff 0d 10 d4 : crc=d4 YES
 	53 00 4b 46 7f ff 0d 10 d4 t=5187
 
-Note the `28-0000077b5cfd` part will differ per sensor.  5.187 degress celcius is the temperature from this one.
+Note the `28-0000077b5cfd` part will differ per sensor.  `5.187` degress C is the temperature from this one. `temperature-logger` parses this output for you.
 
 ## Install
 
@@ -46,3 +45,4 @@ At this point you can define the following loop, which will update the temperatu
 	    print ('-> Items in Queue: ', len(r.readings))
 	    sleep(60)
 
+Execute this code within the virtualenv, and the temperatures are submitted.
