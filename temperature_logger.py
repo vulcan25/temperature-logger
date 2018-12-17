@@ -32,7 +32,7 @@ class Report():
             
             # Get the actual temperature reading
             for sensor in self.sensors:
-                dataset.append ({'temp':temp.read_temp(sensor),
+                dataset.append ({'temp':temperature.read_temp(sensor),
                                  'sensor':sensor,
                                  'created': date })
             # Update the readings
