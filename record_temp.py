@@ -6,7 +6,7 @@ sensors = ['/sys/bus/w1/devices/28-0000077aae57/w1_slave',
            '/sys/bus/w1/devices/28-0000077b5cfd/w1_slave',
            ]
 
-r = Report('http://192.168.2.23:5000/temperature/temp', sensors )
+r = Report('http://localhost:5000/record', sensors )
 
 count = 0
 while True:
@@ -16,7 +16,7 @@ while True:
     print ('-> Submitting Temperatures ...')
     r.submit()
     print ('-> Items in Queue: ', len(r.readings))
-    sleep(60)
+    sleep(1)
 
 
 print ('done')

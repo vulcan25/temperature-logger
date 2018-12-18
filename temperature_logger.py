@@ -55,11 +55,19 @@ class Report():
         headers = {'Content-type': 'application/json'}        
         
         try:
-            print('Server Response: ', requests.post(self.url,
-                               data=json.dumps(self.readings, default=conv),
-                               headers=headers ).text)
+            r = requests.post(self.url,
+                              data=json.dumps(self.readings, default=conv),
+                              headers=headers).text
+            
             # reset the readings, as all have been submitted.
-            self.readings = []
-        except requests.exceptions.ConnectionError as e:
-            print ('Failed to Connect.')
+            self.readings = []            
+            
+            #TODO: Check for response status
+            # if r[0]['status'] != 'success':
+            #     raise Exception
+            # else:
+            #     self.readings = []
+
+        except Exception as e:
+            print ('Failed to Connect.', e)
 
