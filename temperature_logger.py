@@ -27,9 +27,11 @@ class Report():
             
             # Get the actual temperature reading
             for sensor in self.sensors:
-                dataset.append ({'temp':temperature.read_temp(sensor),
-                                 'sensor':sensor,
-                                 'created': date })
+                dataset.append ({'line_name':sensor,
+                                 'x': date,
+                                 'y':temperature.read_temp(sensor),
+                                 'key': 'PRIV'
+                                  })
             # Update the readings
             self.readings = dataset
         except:
@@ -41,9 +43,10 @@ class Report():
 
     def test_read_temps(self):
         dataset = self.readings
-        dataset.append ({'temp': 8,
-                         'sensor':'TEST',
-                         'created': datetime.datetime.now()})
+        dataset.append ({'y': 8,
+                         'line_name':'TEST',
+                         'x': datetime.datetime.now(),
+                         'key': 'PRIV' })
         self.readings = dataset
 
     def submit(self):
@@ -52,7 +55,7 @@ class Report():
         headers = {'Content-type': 'application/json'}        
         
         try:
-            print('Server Response: ', requests.get(self.url,
+            print('Server Response: ', requests.post(self.url,
                                data=json.dumps(self.readings, default=conv),
                                headers=headers ).text)
             # reset the readings, as all have been submitted.
