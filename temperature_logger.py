@@ -57,17 +57,15 @@ class Report():
         try:
             r = requests.post(self.url,
                               data=json.dumps(self.readings, default=conv),
-                              headers=headers).text
-            
-            # reset the readings, as all have been submitted.
-            self.readings = []            
-            
-            #TODO: Check for response status
-            # if r[0]['status'] != 'success':
-            #     raise Exception
-            # else:
-            #     self.readings = []
-
+                              headers=headers)
+            if r.status_code == 201:
+                self.readings = []
+            else:
+                print (r.json())
         except Exception as e:
             print ('Failed to Connect.', e)
+
+
+        
+        
 
