@@ -9,7 +9,7 @@ Follow the wiring diagram `Wiring for SSH Terminal Output`.  If this worked, you
 	53 00 4b 46 7f ff 0d 10 d4 : crc=d4 YES
 	53 00 4b 46 7f ff 0d 10 d4 t=5187
 
-Note the `28-0000077b5cfd` part will differ per sensor.  `5.187` degress C is the temperature from this one. `temperature-logger` parses this output for you.
+Note the `28-0000077b5cfd` part will differ per sensor.  `5.187 ºC`  is the temperature from this one. `temperature-logger` parses this output for you.
 
 ## Install
 
