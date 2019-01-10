@@ -1,5 +1,6 @@
 import requests , json
 import datetime
+import random
 
 __version__ = '0.1.0'
 
@@ -12,10 +13,11 @@ def conv(o):
 
 class Report():
 
-    def __init__(self, url, sensors):
+    def __init__(self, url, sensors, private_key):
         self.url = url
         self.sensors = sensors
         self.readings = []
+        self.private_key = private_key
  
     def read_temps(self):
         """ Read the temperature from each sensor """
@@ -30,7 +32,7 @@ class Report():
                 dataset.append ({'line_name':sensor,
                                  'x': date,
                                  'y':temperature.read_temp(sensor),
-                                 'key': 'PRIV'
+                                 'key': self.private_key
                                   })
             # Update the readings
             self.readings = dataset
@@ -43,10 +45,10 @@ class Report():
 
     def test_read_temps(self):
         dataset = self.readings
-        dataset.append ({'y': 8,
+        dataset.append ({'y': random.randint(-20, 20),
                          'line_name':'TEST',
                          'x': datetime.datetime.now(),
-                         'key': 'PRIV' })
+                         'key': self.private_key })
         self.readings = dataset
 
     def submit(self):
@@ -61,9 +63,10 @@ class Report():
             if r.status_code == 201:
                 self.readings = []
             else:
-                print (r.json())
+                pass
         except Exception as e:
-            print ('Failed to Connect.', e)
+            print ('SERVER SAYS: ', r.json())
+            print ('Failed to Connect.', e , r.status_code)
 
 
         
