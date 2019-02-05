@@ -60,13 +60,18 @@ class Report():
             r = requests.post(self.url,
                               data=json.dumps(self.readings, default=conv),
                               headers=headers)
-            if r.status_code == 201:
-                self.readings = []
-            else:
-                pass
+        
+            try:
+                if r.status_code == 201:
+                    self.readings = []
+                    print ('success')
+                else:
+                    print('Inner fail')# pass #print (r.json())
+            except:
+                print('middle fail')
         except Exception as e:
-            print ('SERVER SAYS: ', r.json())
-            print ('Failed to Connect.', e , r.status_code)
+            print ('outer fail')
+            #iprint ('Failed to Connect.', e , r.status_code)
 
 
         
